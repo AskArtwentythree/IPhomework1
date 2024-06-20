@@ -1,0 +1,81 @@
+<mujoco model="4_bar_mechanism_with_end_effector">
+    <visual>
+        <headlight ambient="0.5 0.5 0.5" />
+    </visual>
+
+    <asset>
+        <material name="black" rgba="0 0 0 1" />
+        <material name="green" rgba="0 1 0 1" />
+        <material name="blue" rgba="0 0 1 1" />
+        <material name="red" rgba="1 0 0 1" />
+        <material name="yellow" rgba="1 1 0 1" />
+        <material name="white" rgba="1 1 1 1" />
+    </asset>
+
+    <option gravity="0 0 -9.81" />
+
+    <worldbody>
+        <light diffuse=".5 .5 .5" pos="0 0 3" dir="0 0 -1"/>
+        <geom type="plane" size="10 10 0.1" material="blue"/>
+
+        <!-- First Active Joint -->
+        <body name="active_joint_1" pos="0.2 0 0.02">
+            <joint name="active_joint_1_hinge" type="hinge" axis="0 0 1" pos="0 0 0" />
+            <geom type="cylinder" size="0.0198 0.0115" material="yellow" mass="0.065" />
+
+            <!-- First Link -->
+            <body name="link_1" pos="0 -0.1 0"  euler="0 0 -90">
+                <geom type="box" size="0.1 0.01 0.005" material="green" mass="0.02" />
+
+                <!-- First Passive Joint -->
+                <body name="passive_joint_1" pos="0.1 0 0" euler="0 0 0">
+                    <joint name="passive_joint_1_hinge" type="hinge" axis="0 0 1" pos="0 0 0" />
+                    <geom type="cylinder" size="0.0198 0.0115" material="white" mass="0.065" />
+
+                    <!-- Second Link -->
+                    <body name="link_2" pos="0.0875 -0.065 0" euler="0 0 -37">
+                        <geom type="box" size="0.1 0.01 0.005" material="green" mass="0.02" contype="0" conaffinity="0"/>
+                        <!-- end effector-->
+                        <body name="end_effector" pos="0.1 0 0">
+                            <geom type="cylinder" size="0.0198 0.0115" material="white" mass="0.065" />
+
+                            <body name="link_4" pos="-0.0275 -0.1 0" euler="0 0 74">
+                                <geom type="box" size="0.1 0.01 0.005" material="green" mass="0.02" contype="0" conaffinity="0"/>
+
+                                <!-- Second Passive Joint  -->
+                                <body name="passive_joint_2" pos="-0.1 0 0" euler="0 0 0">
+                                    <joint name="passive_joint_2_hinge" type="hinge" axis="0 0 1" pos="0 0 0" />
+                                    <geom type="cylinder" size="0.0198 0.0115" material="white" mass="0.065" />
+
+                                    <!-- Third Link  -->
+                                    <body name="link_3" pos="-0.08 0.057 0" euler="0 0 -35">
+                                        <geom type="box" size="0.1 0.01 0.005" material="green" mass="0.02" />
+
+                                        <!-- Second Active Joint  -->
+                                        <body name="active_joint_2" pos="-0.1 0 0">
+                                            <joint name="active_joint_2_hinge" type="hinge" axis="0 0 1" pos="0 0 0" />
+                                            <geom type="cylinder" size="0.0198 0.0115" material="yellow" mass="0.065" />
+                                        </body>
+                                    </body>
+                                </body>
+                            </body>
+                        </body>
+                    </body>
+                </body>
+            </body>
+        </body>
+    </worldbody>
+
+    <actuator>
+        <motor name="active_joint_1_motor" joint="active_joint_1_hinge" gear="100"/>
+        <motor name="active_joint_2_motor" joint="active_joint_2_hinge" gear="100"/>
+    </actuator>
+
+    <equality>
+        <weld name="distance_constraint" body1="active_joint_1" body2="active_joint_2" anchor="0 0 0" />
+        <weld name="distance_constraint2" body1="passive_joint_1" body2="passive_joint_2" anchor="0 0 0" />
+        <connect name="kinematic_link" active="true" body1="active_joint_1" body2="active_joint_2"  anchor="0 0 0"/>
+        <connect name="kinematic_link2" active="true" body1="passive_joint_1" body2="passive_joint_2"  anchor="0 0 0"/>
+    </equality>
+    
+</mujoco>
