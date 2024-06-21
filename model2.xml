@@ -64,9 +64,6 @@
                 </body>
             </body>
         </body>
-        <body name="mnimoe_body" pos="-0.055 -0.02 0">
-            <geom type="cylinder" size="0.01 0.01" material="yellow" mass="0.065" />
-        </body>
     </worldbody>
 
     <actuator>
@@ -75,11 +72,7 @@
     </actuator>
 
     <equality>
-        <weld name="distance_constraint" body1="active_joint_1" body2="active_joint_2" anchor="0 0 0" />
-        <weld name="distance_constraint2" body1="passive_joint_1" body2="passive_joint_2" anchor="0 0 0" />
-        <connect name="kinematic_link0" active="true" body1="mnimoe_body" body2="active_joint_2"  anchor="0 0 0"/> 
-        <connect name="kinematic_link" active="true" body1="active_joint_1" body2="active_joint_2"  anchor="0 0 0"/>
-        <connect name="kinematic_link2" active="true" body1="passive_joint_1" body2="passive_joint_2"  anchor="0 0 0"/>
+        <connect name="kinematic_link2" active="true" body1="active_joint_2" anchor="0 0 0"/>
     </equality>
     
 </mujoco>
