@@ -19,26 +19,26 @@
         <geom type="plane" size="10 10 0.1" material="blue"/>
 
         <body name="base" pos="0 0 0.1">
-            <geom type="box" size="0.1 0.1 0.2" rgba="0 0 0 0.5" />
+            <geom type="box" size="0.1 0.1 0.2" rgba="0 0 0 0.5" contype="0" conaffinity="0" />
 
             <!-- Smaller Base on Corner of Main Base -->
             <body name="smaller_base" pos="0.03 0.0455 0.255">
-                <geom type="box" size="0.075 0.055 0.055" rgba="0 0 0 0.5" />
+                <geom type="box" size="0.075 0.055 0.055" rgba="0 0 0 0.5" contype="0" conaffinity="0" />
 
                 <!-- Shoulder Pitch -->
-                <body name="shoulder_pitch" pos="0.0789 -0.0745 0" euler="0 90 0">
+                <body name="shoulder_pitch" pos="0.0789 -0.0777 0" euler="0 90 0">
                     <joint name="shoulder_pitch_joint" type="hinge" axis="0 0 1" pos="0 0 0" />
-                    <geom type="cylinder" size="0.0198 0.0115" rgba="0 0 0 0.5" mass="0.065"/>
+                    <geom type="cylinder" size="0.0198 0.0115" rgba="0 0 0 0.5" mass="0.065" contype="0" conaffinity="0"/>
 
                     <!-- Shoulder Roll -->
-                    <body name="shoulder_roll" pos="0 0 0.0311" euler="0 90 0">
+                    <body name="shoulder_roll" pos="0 0 0.0341" euler="0 90 0">
                         <joint name="shoulder_roll_joint" type="hinge" axis="0 0 1" pos="0 0 0" range="0 180"/> 
-                        <geom type="cylinder" size="0.0198 0.0115" rgba="0 0 0 0.5" mass="0.065"/>
+                        <geom type="cylinder" size="0.0198 0.0115" rgba="0 0 0 0.5" mass="0.065" contype="0" conaffinity="0"/>
 
                         <!-- Shoulder Yaw -->
-                        <body name="shoulder_yaw" pos="0 0.031 0" euler="90 0 0">
+                        <body name="shoulder_yaw" pos="0 0.036 0" euler="90 0 0">
                             <joint name="shoulder_yaw_joint" type="hinge" axis="0 0 1" pos="0 0 0" />
-                            <geom type="cylinder" size="0.0198 0.0115" rgba="0 0 0 0.5"  mass="0.065"/>
+                            <geom type="cylinder" size="0.0198 0.0115" rgba="0 0 0 0.5"  mass="0.065" contype="0" conaffinity="0"/>
 
                             <!-- Green Link 1 -->
                             <body name="link1" pos="0 0 -0.110"  euler="0 90 0">
