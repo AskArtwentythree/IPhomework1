@@ -10,6 +10,7 @@ model_path = 'model1.xml'
 model = mujoco.MjModel.from_xml_path(model_path)
 data = mujoco.MjData(model)
 
+
 joint_ranges = []
 for i in range(model.njnt):
     joint_limited = model.jnt_limited[i]
