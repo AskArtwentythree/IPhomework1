@@ -1,0 +1,177 @@
+<?xml version="1.0" ?>
+<robot name="Final">
+
+<mujoco>
+  <compiler balanceinertia="true" discardvisual="false" meshdir="meshes" fusestatic="false"/>
+</mujoco>
+
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="0.04975643133745598 0.03938833266871715 0.004996964789907014" rpy="0 0 0"/>
+    <mass value="0.33668977813971906"/>
+    <inertia ixx="0.00011948567792967313" iyy="0.00039235872463984855" izz="0.0005064214338297551" ixy="-2.8351395247413385e-06" iyz="-3.528545939946771e-08" ixz="2.031936255017519e-08"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="component1">
+  <inertial>
+    <origin xyz="-0.013093844629106358 -0.0016244826316736101 0.024131673784748987" rpy="0 0 0"/>
+    <mass value="0.029352244429056873"/>
+    <inertia ixx="8.060725766007138e-06" iyy="1.2586749480563634e-05" izz="5.055086592371794e-06" ixy="-3.8541462469546514e-07" iyz="5.265673264765327e-07" ixz="5.502554930385934e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.115003 -0.005119 -0.004906" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/component1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="-0.115003 -0.005119 -0.004906" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/component1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="middle1">
+  <inertial>
+    <origin xyz="-0.16499814818068037 0.029464214742694506 -0.06721149321533182" rpy="0 0 0"/>
+    <mass value="0.03070244460218902"/>
+    <inertia ixx="7.437543996775784e-06" iyy="1.0774875954084131e-05" izz="8.26129033562614e-06" ixy="-3.401502965896647e-06" iyz="-2.428186797571773e-06" ixz="-4.732602470993363e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.230829 0.041657 -0.110017" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/middle1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="-0.230829 0.041657 -0.110017" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/middle1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_arc1">
+  <inertial>
+    <origin xyz="-0.05031393390078353 0.0016250577752591833 0.024131673784879105" rpy="0 0 0"/>
+    <mass value="0.029352244429056797"/>
+    <inertia ixx="8.060725765820578e-06" iyy="1.258674947675755e-05" izz="5.055086599545662e-06" ixy="-3.854146246562289e-07" iyz="-5.265673253407259e-07" ixz="-5.502554929090241e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.048503 -0.005119 -0.004906" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/left_arc1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="-0.048503 -0.005119 -0.004906" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/left_arc1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="mid_arc1">
+  <inertial>
+    <origin xyz="0.07743420860636807 -0.01062643675723649 -0.00806520996316612" rpy="0 0 0"/>
+    <mass value="0.029352244429067843"/>
+    <inertia ixx="7.181404179770325e-06" iyy="8.604695140939901e-06" izz="6.935294941938403e-06" ixy="2.779880540309575e-06" iyz="-2.497663214864019e-06" ixz="3.991009787669301e-06"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.047558 -0.002858 -0.049666" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/mid_arc1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </visual>
+  <collision>
+    <origin xyz="0.047558 -0.002858 -0.049666" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/mid_arc1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Revolute_14" type="continuous">
+  <origin xyz="0.115003 0.005119 0.004906" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="component1"/>
+  <axis xyz="1.0 0.0 -0.0"/>
+</joint>
+<transmission name="Revolute_14_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Revolute_14">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Revolute_14_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<joint name="Revolute_16" type="continuous">
+  <origin xyz="0.115826 -0.046776 0.105111" rpy="0 0 0"/>
+  <parent link="component1"/>
+  <child link="middle1"/>
+  <axis xyz="-0.497979 -0.018186 -0.866998"/>
+</joint>
+<transmission name="Revolute_16_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Revolute_16">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Revolute_16_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<joint name="Revolute_17" type="continuous">
+  <origin xyz="0.048503 0.005119 0.004906" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_arc1"/>
+  <axis xyz="1.0 0.0 -0.0"/>
+</joint>
+<transmission name="Revolute_17_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Revolute_17">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Revolute_17_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+<joint name="Revolute_19" type="continuous">
+  <origin xyz="-0.096061 -0.002261 0.04476" rpy="0 0 0"/>
+  <parent link="left_arc1"/>
+  <child link="mid_arc1"/>
+  <axis xyz="0.497979 0.018186 -0.866998"/>
+</joint>
+<transmission name="Revolute_19_tran">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="Revolute_19">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="Revolute_19_actr">
+    <hardwareInterface>PositionJointInterface</hardwareInterface>
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+</transmission>
+
+</robot>
