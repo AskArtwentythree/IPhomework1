@@ -1,6 +1,6 @@
 # Video Filters Project
 
-This project applies multiple image processing filters to a video stream in real time using Python and OpenCV. The available filters include **Black and White**, **Erosion**, **Horizontal Flip**, and **Inversion**. Each filter is applied sequentially to the video, showcasing how different effects can be stacked together for video manipulation.
+This project applies multiple image processing filters to a video stream in real time. The available filters include **Black and White**, **Erosion**, **Horizontal Flip**, and **Inversion**. Each filter is applied sequentially to the video, showing by how different effects can be stacked together.
 
 ## Features
 
@@ -25,7 +25,7 @@ The `main.py` script loads a video and processes it frame by frame. Each frame g
 3. Inversion of colors
 4. Horizontal flipping
 
-Each filter is implemented in its own module under the `filters/` directory, and all filters are combined in the `main.py` script.
-
 ## Preview
+
+https://www.youtube.com/watch?v=ZbM8tWJ5ELc
 
